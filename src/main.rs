@@ -30,5 +30,11 @@ fn main(){
 
     let dns_server: std::net::Ipv4Addr = dns_server_text.parse().expect("Error: unnable to parse <dns-server> as an IPv4 address");
 
-    println!("URL: {}, Domain: {}, TAP: {:?}, DNS: {}", url, domain_name, tap, dns_server);
+    // println!("URL: {}, Domain: {}, TAP: {:?}, DNS: {}", url, domain_name, tap, dns_server);
+
+    let addr = dns::resolve(dns_server_text, domain_name).unwrap().unwrap();
+
+    let mac = ethernet::MacAddress::new().into();
+
+    http::get(tap, mac, addr, url).unwrap();
 }
