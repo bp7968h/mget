@@ -13,7 +13,7 @@ impl Display for MacAddress {
         let octet = self.0;
         write!(f, "{:02x}:{:02x}:{:02x}:{:02x}:{:02x}:{:02x}", 
             octet[0], octet[1], octet[2],
-            octet[3], octet[5], octet[6]
+            octet[3], octet[4], octet[5]
         )
     }
 }
